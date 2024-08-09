@@ -1,27 +1,33 @@
 import { Injectable } from "@nestjs/common";
-import { readFile, writeFile } from "fs/promises";
+import { readFile, } from "fs/promises";
+import { PrismaService } from "../../prisma/prisma.service";
 
 @Injectable()
 export class CrudRepository{
+    // first create a constructor
+    constructor(private prisma:PrismaService){}
+
     async findOne(id:string){
-        const contents = await readFile("users.json",'utf8');
-        const messages = JSON.parse(contents);
-        return messages[id]
+        const newId = parseInt(id);
+        // const user = await this.prisma.user.findFirst(newId);
+        return {};
     }
 
     async findAll(){
-        const contents = await readFile("users.json",'utf8');
-        const messages = JSON.parse(contents);
-        return messages;
+        return this.prisma.user.findMany();
     }
 
     async create(firstName:string,lastName:string){
-        const contents = await readFile('users.json','utf8');
-        const messages = JSON.parse(contents);
-        const id = Math.floor(Math.random()*999);
-        messages[id] = {id, firstName, lastName};
-
-        await writeFile('messges.json', JSON.stringify(messages));
+        const data =  {
+            name: `${firstName} ${lastName}`,
+            email: "yourEmail@gmail.com",
+            create_at : 'as',
+            role: "user"
+        }
+         return data;
+        // return this.prisma.user.create({
+        //    data,
+        // });
     }
 
 }

@@ -1,28 +1,26 @@
 import { BadRequestException, Body, Controller, Delete, Get, Param, Patch, Post, Query } from '@nestjs/common';
-import { UserCreateDto, UserPasswordDto } from '../dtos/crud.dto'
+import { UserCreateDto, UserPasswordDto, UserSignInDto, UserSignupDto } from '../dtos/crud.dto'
 import { CrudService } from './crud.service';
 
-@Controller('crud')
+@Controller('user')
 export class CrudController {
     constructor(private crudService:CrudService){}
+    @Post("signup")
+    userSignUp(@Body() body:UserSignupDto){
+      return this.crudService.signup(body);
+    }
+
+    @Post('signin')
+    userSignin(@Body() body:UserSignInDto){
+      return this.crudService.signin(body);
+    }
 
     @Get('/single/:id')
     singleUser(@Param(":id") id:string){
-      const user = this.crudService.findOne(id);
-      if(!user) {
-        // throw new NotFoundException({status:false, message: "User not found"})
-        throw new BadRequestException({status:false,message: "Messae not found"})
-      }
     }
 
     @Get("/all")
     allUser(@Query() query:any){
-       return this.crudService.findAll()
-    }
-
-    @Post('/create')
-    create(@Body() body:UserCreateDto){
-      return this.crudService.create(body.firstName, body.lastName)
     }
 
     @Patch("/update/:id")
