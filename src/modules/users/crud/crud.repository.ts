@@ -1,6 +1,5 @@
 import { Injectable } from "@nestjs/common";
-import { readFile, } from "fs/promises";
-import { PrismaService } from "../../prisma/prisma.service";
+import { PrismaService } from "../../../prisma/prisma.service";
 
 @Injectable()
 export class CrudRepository{

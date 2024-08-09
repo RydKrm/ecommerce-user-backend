@@ -14,6 +14,7 @@ model User {
   password    String
   phoneNumber String
   role        String   @default("user")
+  status      Boolean  @default(true)
   created_at  DateTime @default(now())
   store       store[]
 }
@@ -25,4 +26,14 @@ model store {
   status      Boolean @default(true)
   userID      Int
   user        User    @relation(fields: [userID], references: [id])
+}
+
+model product {
+  id             Int     @id @default(autoincrement())
+  name           String
+  price          Float
+  discount_price Float
+  description    String
+  quantity       Int
+  Status         Boolean @default(true)
 }
