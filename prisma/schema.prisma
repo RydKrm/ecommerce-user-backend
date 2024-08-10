@@ -28,12 +28,24 @@ model store {
   user        User    @relation(fields: [userID], references: [id])
 }
 
-model product {
-  id             Int     @id @default(autoincrement())
-  name           String
-  price          Float
-  discount_price Float
-  description    String
-  quantity       Int
-  Status         Boolean @default(true)
+model Seller {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String   @unique
+  password    String
+  phoneNumber String   @unique
+  role        String   @default("seler")
+  status      Boolean  @default(true)
+  created_at  DateTime @default(now())
+}
+
+model Admin {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String   @unique
+  password    String
+  phoneNumber String   @unique
+  role        String   @default("admin")
+  status      Boolean  @default(true)
+  created_at  DateTime @default(now())
 }

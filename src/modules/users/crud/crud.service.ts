@@ -5,7 +5,6 @@ import * as bcrypt from "bcrypt";
 import { BadGatewayException, BadRequestException, Injectable, Res } from '@nestjs/common';
 import { PrismaService } from "../../../prisma/prisma.service";
 import { TokenService } from "../../../common/services/jwt.service";
-import { Response } from "express";
 
 @Injectable()
 export class CrudService{

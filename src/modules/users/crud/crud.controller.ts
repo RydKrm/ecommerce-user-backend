@@ -3,7 +3,7 @@ import { UpdateUserProfileDto, UserPasswordDto, UserSignInDto, UserSignupDto } f
 import { CrudService } from './crud.service';
 import { Auth, AuthGuard } from '../../../common/decorator/auth.decorator';
 
-@Controller('user')
+@Controller('api/user')
 @UseGuards(AuthGuard)
 export class CrudController {
     constructor(private crudService:CrudService){}
