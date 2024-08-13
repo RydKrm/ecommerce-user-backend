@@ -36,8 +36,10 @@ export class AuthGuard implements CanActivate {
     try {
       // const user = this.jwtService.verify(token);
       const secrate = process.env.JWT_TOKEN || "default-token-checker";
-      const user : any = jwt.verify(token, secrate );
+      const user = jwt.verify(token, secrate ) as {role:string,id:number};
       request.user = user;
+      request.id = user.id;
+      
 
       if (!roles.includes(user.role)) {
         throw new ForbiddenException({ status: false, message: "User not authorized for this route" });

@@ -9,6 +9,7 @@ import { JwtService } from '@nestjs/jwt';
 
 @Module({
   providers: [SellerService, DashboardService,TokenService, PrismaService, JwtService],
-  controllers: [SellerController, DashboardController]
+  controllers: [SellerController, DashboardController],
+  exports:[SellerService]
 })
 export class SellerModule {}

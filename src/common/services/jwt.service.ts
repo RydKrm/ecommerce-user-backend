@@ -12,7 +12,6 @@ export class TokenService{
     // for create jwt token
     async createToken(payload:Payload):Promise<string>{
         const tokenSign = process.env.JWT_TOKEN || "default-token-checker";
-        console.log("token check ", tokenSign)
         const token = this.jwtService.sign(payload,{secret:tokenSign});
         return token;
     }

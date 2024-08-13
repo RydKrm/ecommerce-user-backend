@@ -1,7 +1,7 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { IsEmail, IsNegative, IsNotEmpty, IsNumber, IsString, Min, MinLength } from "class-validator";
+import { IsEmail,  IsNotEmpty,  IsOptional,  IsString, Min, MinLength } from "class-validator";
 
-export class SellerSignupDto {
+export class AdminSignupDto {
     @IsNotEmpty({ message: 'Name is required' })
     @IsString({ message: 'Name must be a string' })
     name: string;
@@ -19,7 +19,7 @@ export class SellerSignupDto {
     email: string;
   }
   
-  export class SellerSignInDto{
+  export class AdminSignInDto{
         @IsNotEmpty({message: "Email is required"})
         @IsEmail({},{message: "Require valid email"})
         email: string;
@@ -30,18 +30,20 @@ export class SellerSignupDto {
         password: string
   }
 
-export class SellerProfileDto{
-    @IsEmail()
+export class AdminProfileDto{
+     @IsEmail()
+     @IsOptional()
       email: string
       @IsString()
+     @IsOptional()
       name:string
-      @IsString()
+     @IsOptional()
+     @IsString()
       phoneNumber:string
 }
 
-export class UpdateSellerProfileDto extends PartialType(SellerProfileDto){}
 
-export class SellerUpdatePasswordDto{
+export class AdminUpdatePasswordDto{
       @IsNotEmpty({message:"Old and new passsword required"})
       @IsString({message:"Password must be string"})
       @Min(6,{message:"Atleast 6 character need "})

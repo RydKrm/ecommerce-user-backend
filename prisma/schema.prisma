@@ -26,6 +26,7 @@ model store {
   status      Boolean @default(true)
   userID      Int
   user        User    @relation(fields: [userID], references: [id])
+  created_at  DateTime @default(now())
 }
 
 model Seller {
