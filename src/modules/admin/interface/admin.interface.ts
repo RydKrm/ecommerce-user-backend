@@ -1,5 +1,5 @@
 export interface IAllAdminQuery {
-    page?:number,
-    limit?:number,
-    sortBy?:"asc"|"desc"
+  page?: number
+  limit?: number
+  sortBy?: 'asc' | 'desc'
 }

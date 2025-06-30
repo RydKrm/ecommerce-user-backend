@@ -1,20 +1,20 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
-export class createStoreDto{
-    @IsString({message:"Store name must be string"})
-    @IsNotEmpty({message:"Shop name required"})
-    name:string
+import { IsNotEmpty, IsOptional, IsString } from 'class-validator'
+export class createStoreDto {
+  @IsString({ message: 'Store name must be string' })
+  @IsNotEmpty({ message: 'Shop name required' })
+  name: string
 
-    @IsString({message:"Store description must be string"})
-    @IsNotEmpty({message:"Shop description required"})
-    description:string
+  @IsString({ message: 'Store description must be string' })
+  @IsNotEmpty({ message: 'Shop description required' })
+  description: string
 
-    @IsOptional()
-    userID:number
+  @IsOptional()
+  userID: number
 }
 
-export class UpdateStoreDto{
-    @IsOptional()
-    name:string
-    @IsOptional()
-    description:string
+export class UpdateStoreDto {
+  @IsOptional()
+  name: string
+  @IsOptional()
+  description: string
 }
